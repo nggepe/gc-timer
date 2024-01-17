@@ -1,12 +1,5 @@
-import './App.css'
-
 function App() {
-
-  return (
-    <>
-      Blank page
-    </>
-  )
+  return <div>Blank page</div>;
 }
 
-export default App
+export default App;

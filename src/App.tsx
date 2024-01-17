@@ -1,5 +1,12 @@
+import AppBarMaster from "./components/AppBarMaster";
+
 function App() {
-  return <div>Blank page</div>;
+  return (
+    <>
+      <AppBarMaster></AppBarMaster>
+      <div>Blank page</div>
+    </>
+  );
 }
 
 export default App;

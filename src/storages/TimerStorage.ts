@@ -2,13 +2,26 @@ const TIMER_KEY = "gc-timer";
 
 export interface GCTimer {
   name: string;
-  milliSeconds: number;
-  milliSecondsSpent: number;
+  /**total times (milliseconds) */
+  totalTime: number;
+  totalTimeSpent: number;
   id: number;
   isStart: boolean;
   editing: boolean;
   lastStartAt: number;
 }
+
+export const initialTimer: () => GCTimer = () => {
+  return {
+    totalTime: 0,
+    totalTimeSpent: 0,
+    name: "",
+    isStart: false,
+    editing: true,
+    id: Date.now(),
+    lastStartAt: Date.now(),
+  };
+};
 
 export const addTimer = (value: GCTimer) => {
   const timers = [...getTimers(), value];

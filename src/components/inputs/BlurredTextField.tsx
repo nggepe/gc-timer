@@ -5,6 +5,7 @@ const BlurredTextField: FC<
   Omit<TextFieldProps<TextFieldVariants>, "onChange"> & {
     value: string;
     onChange?: (value: string) => void;
+    format?: "gc-timer" | string[];
   }
 > = (props) => {
   const [state, setState] = useState(props.value);
@@ -19,7 +20,13 @@ const BlurredTextField: FC<
     <TextField
       {...props}
       onChange={(e) => {
-        setState(e.target.value);
+        let value = e.target.value;
+        if (props.format == "gc-timer") {
+          value = value
+            .toLowerCase()
+            .replace(/[^0-9&^d&^h&^m&^s&^ms&^\s]/gi, "");
+        }
+        setState(value);
       }}
       onBlur={callChange}
       onKeyDown={(e) => {

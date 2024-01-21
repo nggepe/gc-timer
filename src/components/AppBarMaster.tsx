@@ -24,13 +24,24 @@ interface Props {
   window?: () => Window;
 }
 
+interface NavItem {
+  link: string;
+  name: string;
+  icon?: React.ReactNode;
+}
+
 const drawerWidth = 240;
-const navItems = [
+const navItems: NavItem[] = [
   {
     link: "https://gepcode.com/blog",
     name: "Posts",
   },
+  {
+    link: "https://github.com/nggepe/gc-timer",
+    name: "Github",
+  },
 ];
+
 const DrawerAppBar: _FC<Props & FCProps> = (props) => {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -48,8 +59,8 @@ const DrawerAppBar: _FC<Props & FCProps> = (props) => {
       <List>
         {navItems.map((item) => (
           <ListItem key={`${item.link}`} disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
-              <ListItemText primary={item.link} />
+            <ListItemButton sx={{ textAlign: "center" }} href={item.link}>
+              <ListItemText primary={item.name} />
             </ListItemButton>
           </ListItem>
         ))}

@@ -1,7 +1,14 @@
 import { Button, Grid, Typography } from "@mui/material";
-import useTimers from "../../hooks/useTimers";
 import { _FC } from "../../types/common";
 import Timer from "./Timer";
+import {
+  GCTimer,
+  addTimer,
+  canAddTimer,
+  deleteTimerById,
+  getTimers,
+} from "../../storages/TimerStorage";
+import { useState } from "react";
 
 const Timers: _FC = () => {
   const { state, add, deleteById } = useTimers();
@@ -42,3 +49,28 @@ const Timers: _FC = () => {
 };
 
 export default Timers;
+
+const useTimers = () => {
+  const [state, setState] = useState(getTimers());
+
+  const add = () => {
+    const newTimer: GCTimer = {
+      totalTime: 0,
+      totalTimeSpent: 0,
+      name: "",
+      isStart: false,
+      editing: true,
+      id: Date.now(),
+      lastStartAt: Date.now(),
+    };
+    if (canAddTimer()) {
+      setState(addTimer(newTimer));
+    }
+  };
+
+  const deleteById = (id: number) => {
+    setState(deleteTimerById(id));
+  };
+
+  return { state, add, deleteById };
+};

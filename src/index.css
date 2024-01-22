@@ -6,4 +6,57 @@ html,
 body {
   margin: 0;
   padding: 0;
+  font-size: 16px;
+}
+
+h1.MuiTypography-h1 {
+  font-size: 42px;
+}
+
+h2.MuiTypography-h2 {
+  font-size: 34px;
+}
+
+h3.MuiTypography-h3 {
+  font-size: 28px;
+}
+
+h4.MuiTypography-h4 {
+  font-size: 22px;
+}
+
+h5.MuiTypography-h5 {
+  font-size: 20px;
+}
+
+h6.MuiTypography-h6 {
+  font-size: 18px;
+}
+
+h1.MuiTypography-h1,
+h2.MuiTypography-h2,
+h3.MuiTypography-h3,
+h4.MuiTypography-h4,
+h5.MuiTypography-h5,
+h6.MuiTypography-h6 {
+  font-weight: 600;
+}
+
+button.btn-text {
+  color: inherit;
+  text-transform: none;
+  text-align: left;
+}
+
+button.btn-block {
+  display: block;
+  width: 100%;
+}
+
+button.btn-no-padding {
+  padding: 0;
+}
+
+.text-end {
+  text-align: right;
 }

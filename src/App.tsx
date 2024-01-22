@@ -1,12 +1,15 @@
-import AppBarMaster from "./components/AppBarMaster";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Home from "./pages/Home";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home></Home>,
+  },
+]);
 
 function App() {
-  return (
-    <>
-      <AppBarMaster></AppBarMaster>
-      <div>Blank page</div>
-    </>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

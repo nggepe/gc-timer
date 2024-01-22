@@ -6,7 +6,7 @@ export interface GCTimer {
   totalTime: number;
   totalTimeSpent: number;
   id: number;
-  isStart: boolean;
+  isPlay: boolean;
   editing: boolean;
   lastStartAt: number;
 }
@@ -16,7 +16,7 @@ export const initialTimer: () => GCTimer = () => {
     totalTime: 0,
     totalTimeSpent: 0,
     name: "",
-    isStart: false,
+    isPlay: false,
     editing: true,
     id: Date.now(),
     lastStartAt: Date.now(),
@@ -36,6 +36,14 @@ export const getTimers = () => {
   const timers = JSON.parse(timersJson) as GCTimer[];
 
   return timers;
+};
+
+export const getTimerById = (id: number) => {
+  for (const timer of getTimers()) {
+    if (timer.id === id) {
+      return timer;
+    }
+  }
 };
 
 export const setTimers = (timers: GCTimer[]) => {

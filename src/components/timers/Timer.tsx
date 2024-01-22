@@ -1,19 +1,12 @@
-import {
-  Box,
-  Card,
-  CardActions,
-  CardContent,
-  IconButton,
-  Tooltip,
-} from "@mui/material";
+import { Box, Card, CardContent, IconButton, Tooltip } from "@mui/material";
 import { FCProps, _FC } from "../../types/common";
 import { GCTimer } from "../../storages/TimerStorage";
 import TimerNameEdit from "./timerFragments/TimerNameEdit";
 import CloseIcon from "@mui/icons-material/Close";
 import TimerTimeEdit from "./timerFragments/TimerTimeEdit";
 import { TimerContextProvider } from "../../contexts/TimerContext";
-import PlayArrow from "@mui/icons-material/PlayArrow";
-import Stop from "@mui/icons-material/Stop";
+import TimerActions from "./timerFragments/TimerActions";
+import TimerCountDown from "./timerFragments/TimerCountDown";
 
 interface TimerProps extends FCProps {
   gcTimer: GCTimer;
@@ -35,13 +28,9 @@ const Timer: _FC<TimerProps> = ({ gcTimer, onDelete }) => {
             </Tooltip>
           </Box>
           <TimerTimeEdit />
+          <TimerCountDown></TimerCountDown>
         </CardContent>
-        <CardActions>
-          <IconButton>
-            <PlayArrow></PlayArrow>
-            <Stop></Stop>
-          </IconButton>
-        </CardActions>
+        <TimerActions></TimerActions>
       </Card>
     </TimerContextProvider>
   );

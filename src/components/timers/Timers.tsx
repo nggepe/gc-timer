@@ -7,6 +7,7 @@ import {
   canAddTimer,
   deleteTimerById,
   getTimers,
+  initialTimer,
 } from "../../storages/TimerStorage";
 import { useState } from "react";
 
@@ -54,15 +55,7 @@ const useTimers = () => {
   const [state, setState] = useState(getTimers());
 
   const add = () => {
-    const newTimer: GCTimer = {
-      totalTime: 0,
-      totalTimeSpent: 0,
-      name: "",
-      isStart: false,
-      editing: true,
-      id: Date.now(),
-      lastStartAt: Date.now(),
-    };
+    const newTimer: GCTimer = initialTimer();
     if (canAddTimer()) {
       setState(addTimer(newTimer));
     }

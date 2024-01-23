@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
 
-const router = createBrowserRouter([
+export const AppRouter = createBrowserRouter([
   {
     path: "/",
     element: <Home></Home>,
@@ -9,7 +9,7 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return <RouterProvider router={AppRouter} />;
 }
 
 export default App;

@@ -5,7 +5,7 @@ on:
     tags: ["v*.*.*"]
 
 jobs:
-  ci-test-build:
+  deployment:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -17,23 +17,11 @@ jobs:
       - run: npm ci
       - run: npm run build
       - name: copy file to server
-        uses: appleboy/scp-action@v0.1.3
+        uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
           password: ${{ secrets.PASSWORD }}
           source: "./dist"
-          target: "temptimer"
-      - name: rebase install
-        uses: appleboy/ssh-action@v0.1.5
-        with:
-          host: ${{secrets.HOST}}
-          username: ${{secrets.USERNAME}}
-          password: ${{secrets.PASSWORD}}
-          port: ${{secrets.PORT}}
-          script: |
-            rm -r timer.gepcode.com
-            mkdir timer.gepcode.com
-            mv temptimer/dist/* timer.gepcode.com
-            rm -r temptimer/dist
+          target: "timer.gepcode.com"

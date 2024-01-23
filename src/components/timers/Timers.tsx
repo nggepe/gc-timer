@@ -26,7 +26,12 @@ const Timers: _FC = () => {
           precision, thanks to the convenience of our Multiple Timer App. Never
           let time slip away – stay on top of your schedule effortlessly!
         </Typography>
-        <Button color="primary" onClick={add} variant="contained">
+        <Button
+          color="primary"
+          onClick={add}
+          variant="contained"
+          aria-label="add-new-timer"
+        >
           Add New Timer
         </Button>
       </Grid>
@@ -41,7 +46,7 @@ const Timers: _FC = () => {
             sm={12}
             xs={12}
           >
-            <Timer onDelete={deleteById} gcTimer={e} />
+            <Timer onDelete={deleteById} gcTimer={{ ...e, index: i }} />
           </Grid>
         );
       })}

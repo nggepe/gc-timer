@@ -1,23 +1,32 @@
-import { Dispatch, FC, SetStateAction, useState } from "react";
+import {
+  Dispatch,
+  FC,
+  SetStateAction,
+  useMemo,
+  useState,
+  createContext,
+} from "react";
 import { GCTimer, initialTimer } from "../storages/TimerStorage";
-import { createContext } from "react";
+
 import { FCProps } from "../types/common";
 
 export const TimerContext = createContext<{
-  state: GCTimer;
-  set: Dispatch<SetStateAction<GCTimer>>;
+  state: GCTimer & { index: number };
+  set: Dispatch<SetStateAction<GCTimer & { index: number }>>;
 }>({
-  state: initialTimer(),
+  state: { ...initialTimer(), index: -1 },
   set: () => {},
 });
 
-export const TimerContextProvider: FC<FCProps & { timer: GCTimer }> = ({
-  timer,
-  children,
-}) => {
-  const [state, setState] = useState<GCTimer>(timer);
+export const TimerContextProvider: FC<
+  FCProps & { timer: GCTimer & { index: number } }
+> = ({ timer, children }) => {
+  const [state, setState] = useState<GCTimer & { index: number }>(timer);
+  const providerValue = useMemo(() => {
+    return { state, set: setState };
+  }, [state, setState]);
   return (
-    <TimerContext.Provider value={{ state, set: setState }}>
+    <TimerContext.Provider value={providerValue}>
       {children}
     </TimerContext.Provider>
   );

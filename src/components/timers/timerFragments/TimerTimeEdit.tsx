@@ -24,6 +24,9 @@ const TimerTimeEdit: FC = () => {
             inputRef={_.ref}
             onChange={$.changeTotalTime}
             format="gc-timer"
+            inputProps={{
+              "aria-label": `text-field-edit-timer-${_.index}`,
+            }}
           />
         </Box>
       ) : (
@@ -31,6 +34,7 @@ const TimerTimeEdit: FC = () => {
           <Button
             className="btn-block btn-text btn-no-padding"
             onClick={$.toggleEditing}
+            aria-label={`button-edit-timer-${_.index}`}
           >
             <Box display={"flex"} gap={"1rem"}>
               <Box display={"block"}>{_.time.h}h</Box>
@@ -81,6 +85,7 @@ const useTimerTimeEdit = () => {
       time: totalTime,
       editing,
       ref,
+      index: state.index,
     },
     /**function */
     $: {

@@ -24,7 +24,7 @@ jobs:
           port: ${{ secrets.PORT }}
           password: ${{ secrets.PASSWORD }}
           source: "./dist"
-          target: "/home/next-kit.appsens.id/temptimer"
+          target: "temptimer"
       - name: rebase install
         uses: appleboy/ssh-action@v0.1.5
         with:

@@ -4,7 +4,7 @@ import PlayArrow from "@mui/icons-material/PlayArrow";
 import Pause from "@mui/icons-material/Pause";
 import Refresh from "@mui/icons-material/Refresh";
 import { TimerContext } from "../../../contexts/TimerContext";
-import { GCTimer, updateTimerData } from "../../../storages/TimerStorage";
+import { updateTimerData } from "../../../storages/TimerStorage";
 
 const TimerActions: FC = () => {
   const { _, $ } = useTimerActions();
@@ -45,7 +45,7 @@ const useTimerActions = () => {
   };
 
   const restartTimer = () => {
-    const newTimer: GCTimer = {
+    const newTimer = {
       ...state,
       totalTimeSpent: 0,
       isPlay: false,

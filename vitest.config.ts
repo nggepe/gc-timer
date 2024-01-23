@@ -23,6 +23,7 @@ export default defineConfig({
         "src/App.tsx",
         "src/main.tsx",
         ".eslintrc.cjs",
+        "src/vite-env.d.ts",
       ],
     },
   },

@@ -2,7 +2,7 @@ export const milliSecondsToTimer = (milliSeconds: number) => {
   const h = Math.floor(milliSeconds / 60 / 60 / 1000);
   const m = Math.floor((milliSeconds % (60 * 60 * 1000)) / 60 / 1000);
   const s = Math.floor((milliSeconds % (60 * 1000)) / 1000);
-  const ms = (milliSeconds % 1000) / 10;
+  const ms = milliSeconds % 1000;
 
   return { h, m, s, ms };
 };

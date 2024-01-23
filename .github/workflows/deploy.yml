@@ -1,0 +1,36 @@
+name: Deployement
+
+on:
+  pull_request:
+    branches: ["master"]
+
+jobs:
+  ci-test-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+          cache: "npm"
+      - run: npm ci
+      - run: npm run build
+      - name: copy file to server
+        uses: appleboy/scp-action@v0.1.3
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          port: ${{ secrets.PORT }}
+          password: ${{ secrets.PASSWORD }}
+          source: "./dist"
+          target: "/home/next-kit.appsens.id/temptimer"
+      - name: rebase install
+        uses: appleboy/ssh-action@v0.1.5
+        with:
+          host: ${{secrets.HOST}}
+          username: ${{secrets.USERNAME}}
+          password: ${{secrets.PASSWORD}}
+          port: ${{secrets.PORT}}
+          script: |
+            cd temptimer

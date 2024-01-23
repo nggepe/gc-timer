@@ -33,4 +33,7 @@ jobs:
           password: ${{secrets.PASSWORD}}
           port: ${{secrets.PORT}}
           script: |
-            cd temptimer
+            rm -r timer.gepcode.com
+            mkdir timer.gepcode.com
+            mv temptimer/dist/* timer.gepcode.com
+            rm -r temptimer/dist

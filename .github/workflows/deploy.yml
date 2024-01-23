@@ -1,8 +1,8 @@
 name: Deployement
 
 on:
-  push:
-    tags: ["v*.*.*"]
+  pull_request:
+    branches: ["master"]
 
 jobs:
   ci-test-build:
@@ -24,16 +24,4 @@ jobs:
           port: ${{ secrets.PORT }}
           password: ${{ secrets.PASSWORD }}
           source: "./dist"
-          target: "temptimer"
-      - name: rebase install
-        uses: appleboy/ssh-action@v0.1.5
-        with:
-          host: ${{secrets.HOST}}
-          username: ${{secrets.USERNAME}}
-          password: ${{secrets.PASSWORD}}
-          port: ${{secrets.PORT}}
-          script: |
-            rm -r timer.gepcode.com
-            mkdir timer.gepcode.com
-            mv temptimer/dist/* timer.gepcode.com
-            rm -r temptimer/dist
+          target: "timer.gepcode.com"

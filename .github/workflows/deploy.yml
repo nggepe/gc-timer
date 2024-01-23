@@ -1,8 +1,8 @@
 name: Deployement
 
 on:
-  pull_request:
-    branches: ["master"]
+  push:
+    tags: ["v*.*.*"]
 
 jobs:
   ci-test-build:

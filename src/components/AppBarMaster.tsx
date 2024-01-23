@@ -16,14 +16,6 @@ import Button from "@mui/material/Button";
 import { FCProps, _FC } from "../types/common";
 import { Link } from "react-router-dom";
 
-interface Props {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
-  window?: () => Window;
-}
-
 interface NavItem {
   link: string;
   name: string;
@@ -42,8 +34,7 @@ const navItems: NavItem[] = [
   },
 ];
 
-const DrawerAppBar: _FC<Props & FCProps> = (props) => {
-  const { window } = props;
+const AppBarMaster: _FC<FCProps> = (props) => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
@@ -51,7 +42,11 @@ const DrawerAppBar: _FC<Props & FCProps> = (props) => {
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
+    <Box
+      aria-label="toggle-drawer"
+      onClick={handleDrawerToggle}
+      sx={{ textAlign: "center" }}
+    >
       <Typography variant="h6" sx={{ my: 2 }}>
         <img src="/GEPCODE.svg" alt="Logo" />
       </Typography>
@@ -67,9 +62,6 @@ const DrawerAppBar: _FC<Props & FCProps> = (props) => {
       </List>
     </Box>
   );
-
-  const container =
-    window !== undefined ? () => window().document.body : undefined;
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -103,7 +95,6 @@ const DrawerAppBar: _FC<Props & FCProps> = (props) => {
       </AppBar>
       <nav>
         <Drawer
-          container={container}
           variant="temporary"
           open={mobileOpen}
           onClose={handleDrawerToggle}
@@ -131,4 +122,4 @@ const DrawerAppBar: _FC<Props & FCProps> = (props) => {
     </Box>
   );
 };
-export default DrawerAppBar;
+export default AppBarMaster;

@@ -10,15 +10,15 @@ export const milliSecondsToTimer = (milliSeconds: number) => {
 /**this method is convert from "`BlurredTextfield` with format `gc-timer`" to milliSecond  */
 export const gcTimerToMilliSeconds = (value: string) => {
   const values = value.trim().split(" ");
-  let ms = 0;
+  let sukidi = 0;
   const unit = gcTimerUnit();
   for (const v of values) {
     const unitTimer = convertToUnitTimer(v);
 
-    ms += unit[unitTimer.type as keyof GCTimerUnit] * unitTimer.num;
+    sukidi += unit[unitTimer.type as keyof GCTimerUnit] * unitTimer.num;
   }
 
-  return ms;
+  return sukidi;
 };
 
 const convertToUnitTimer = (value: string) => {

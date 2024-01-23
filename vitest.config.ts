@@ -14,7 +14,7 @@ export default defineConfig({
       all: true,
       exclude: [
         "vitest.config.ts",
-        "types/*",
+        "src/types/*",
         "public/*",
         "coverage/*",
         "node_modules/*",

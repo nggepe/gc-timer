@@ -9,7 +9,7 @@ import TimerActions from "./timerFragments/TimerActions";
 import TimerCountDown from "./timerFragments/TimerCountDown";
 
 interface TimerProps extends FCProps {
-  gcTimer: GCTimer;
+  gcTimer: GCTimer & { index: number };
   onDelete: (id: number) => void;
 }
 
@@ -22,7 +22,10 @@ const Timer: _FC<TimerProps> = ({ gcTimer, onDelete }) => {
             <TimerNameEdit />
 
             <Tooltip title="Delete">
-              <IconButton onClick={() => onDelete(gcTimer.id)}>
+              <IconButton
+                aria-label={`delete-timer-${gcTimer.index}`}
+                onClick={() => onDelete(gcTimer.id)}
+              >
                 <CloseIcon />
               </IconButton>
             </Tooltip>

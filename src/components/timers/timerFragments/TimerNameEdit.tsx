@@ -75,11 +75,13 @@ const TimerNameEdit: FC = () => {
         variant="standard"
         inputProps={{
           style: { fontSize: "16px", width: "100%", maxWidth: "100%" },
+          "aria-label": `name-input-text-field-${state.index}`,
         }}
         placeholder="Timer name"
         value={state.name}
         onChange={onBlurredChange}
         style={{ width: "100%" }}
+        aria-label={`name-text-field-${state.index}`}
       />
     </Box>
   );

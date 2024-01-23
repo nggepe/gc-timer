@@ -22,6 +22,10 @@ describe("TimerStorage.test.tsx", () => {
     localStorage.clear();
   });
 
+  afterAll(() => {
+    vi.clearAllMocks();
+  });
+
   it("test initialTimer", () => {
     const timer = initialTimer();
     expect(timer.editing).toBeTypeOf("boolean");

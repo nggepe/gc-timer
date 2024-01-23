@@ -8,7 +8,7 @@ import {
   Typography,
 } from "@mui/material";
 import { milliSecondsToTimer } from "../../../helpers/utils";
-import TIME_MOVE from "../../../constants/TIME_MOVE";
+import TIME_INTERVAL from "../../../constants/TIME_INTERVAL";
 
 const TimerCountDown: FC = () => {
   const { _ } = useTimerCountDown();
@@ -57,7 +57,7 @@ const useTimerCountDown = () => {
           return;
         }
         setDistance(ds);
-      }, TIME_MOVE);
+      }, TIME_INTERVAL);
 
     return () => {
       if (intervalId) clearInterval(intervalId);

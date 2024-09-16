@@ -47,7 +47,7 @@
     "vite": "^5.3.3",
     "vite-tsconfig-paths": "^4.3.2",
     "vitest": "^2.0.2",
-    "vitest-matchmedia-mock": "^1.0.5",
+    "vitest-matchmedia-mock": "^1.0.6",
     "vitest-mock-extended": "^2.0.2"
   }
 }
